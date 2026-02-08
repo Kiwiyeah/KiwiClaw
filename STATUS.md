@@ -16,9 +16,16 @@
 - 会话存储：本地 JSON
 
 ## 发现的问题（M1）
-- CLI 运行时缺少 `OPENCLAW_TELEGRAM_BOT_TOKEN`，导致配置校验失败
-  - 说明：服务环境变量可能已设置，但当前终端未注入该变量
+- CLI 运行时缺少 `OPENCLAW_TELEGRAM_BOT_TOKEN` 与 `OPENCLAW_GATEWAY_TOKEN`
+  - 说明：服务环境变量已设置，但当前终端未注入
   - 影响：`openclaw-cn gateway status` 与 `openclaw-cn health` 报告 config invalid
 
+## 审计与诊断结论（已执行）
+- doctor：完成（无 channel security 警告）
+- security audit --deep：`0 critical / 2 warn / 1 info`
+  - warn：`gateway.trusted_proxies_missing`（仅在反向代理访问时需要配置）
+  - warn：`models.weak_tier`（主模型低于推荐等级）
+  - info：attack surface 摘要（groups open=0 / allowlist=1）
+
 ## 结论
-本机网关处于可运行状态，Control UI 可访问。需要补齐 CLI 运行环境的 Telegram Token 变量，以避免 CLI 校验失败。
+本机网关处于可运行状态，Control UI 可访问。CLI 运行环境仍需注入 token（或在服务环境执行），以避免校验失败。
