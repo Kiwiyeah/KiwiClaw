@@ -28,7 +28,8 @@
   - info：attack surface 摘要（groups open=0 / allowlist=1）
 
 ## 模型可用性
-- 目前可用模型仅 `openai/gpt-4o`
+- 默认模型已切换为 `openai/gpt-5.2`
+- 允许模型列表已包含 `openai/gpt-5.2`
 - 其余已配置模型不可用（需要完成对应提供方认证）
 
 ## 结论
