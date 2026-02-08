@@ -35,6 +35,16 @@
 - 远程访问使用 Tailscale/SSH 隧道
 - 密钥不在文档中明文保存
 
+## 远程访问（推荐：SSH 隧道）
+在远程客户端执行：
+`ssh -N -L 18789:127.0.0.1:18789 <user>@<gateway-host>`
+然后在本地浏览器打开：
+`http://127.0.0.1:18789/`
+
+说明：
+- 使用 SSH 隧道时无需配置 `gateway.trustedProxies`
+- 若改为反向代理暴露 Control UI，需配置 `gateway.trustedProxies`
+
 ## 验证清单
 - Control UI 本地可访问且需要认证
 - 网关服务处于运行中

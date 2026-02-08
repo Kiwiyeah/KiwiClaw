@@ -27,5 +27,9 @@
   - warn：`models.weak_tier`（主模型低于推荐等级）
   - info：attack surface 摘要（groups open=0 / allowlist=1）
 
+## 模型可用性
+- 目前可用模型仅 `openai/gpt-4o`
+- 其余已配置模型不可用（需要完成对应提供方认证）
+
 ## 结论
 本机网关处于可运行状态，Control UI 可访问。CLI 运行环境仍需注入 token（或在服务环境执行），以避免校验失败。
